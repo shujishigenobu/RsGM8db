@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  N1h_s: MyString
+  N2h_s: MyString
+  N3h_s: MyString
+  N1h_m: MyString
+  N2h_m: MyString
+  N3h_m: MyString
+  X.N1h_l: MyString
+  N2h_l: MyString
+  N3h_l: MyString
+  N1t_s: MyString
+  N2t_s: MyString
+  N3t_s: MyString
+  N1t_m: MyString
+  N2t_m: MyString
+  N3t_m: MyString
+  N1t_l: MyString
+  N2t_l: MyString
+  N3t_l: MyString
+
+two:
+  N1h_s: MyString
+  N2h_s: MyString
+  N3h_s: MyString
+  N1h_m: MyString
+  N2h_m: MyString
+  N3h_m: MyString
+  X.N1h_l: MyString
+  N2h_l: MyString
+  N3h_l: MyString
+  N1t_s: MyString
+  N2t_s: MyString
+  N3t_s: MyString
+  N1t_m: MyString
+  N2t_m: MyString
+  N3t_m: MyString
+  N1t_l: MyString
+  N2t_l: MyString
+  N3t_l: MyString

@@ -1,0 +1,23 @@
+<% gname = @orf_model.transcript_model.name.sub(/_seq\d+/, "") %>
+<% res = ExpressionLevel.where(:gene => gname)[0] %>
+<% libs = %w{
+  f1hh f2hh f3hh
+  m1hh m2hh m3hh
+  f1th f2th f3th
+  m1th m2th m3th }
+%>
+
+
+<% exdata = libs.map{|l| res.send(l)} %>
+
+<% maxv = [exdata.map{|e| (e * 1.1).to_i}, 10].flatten.max %>
+
+<%= image_tag Gchart.bar(
+        :data => exdata,
+	:bar_width_and_spacing => [16, 16],
+	:size => '600x150',
+	:axis_with_labels => 'x,y',
+	:axis_labels => [ libs.join('|'), "0|#{maxv}"],
+	:max_value => maxv,
+	:title => "#{gname} (cpm)"
+	) %>

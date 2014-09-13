@@ -1,0 +1,66 @@
+<%- model_class = OrfModel -%>
+<% om = @orf_model %>
+
+<% content_for :nav_context_menu do %>
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    Jump to ...
+    <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu pull-right">
+      <li><a href="#orf">ORF prediction</a></li>
+      <li><a href="#blast_nr">BLAST nr</a></li>
+      <li><a href="#pfam">Pfam</a></li>
+   </ul>
+  </li>
+<% end %>
+
+<div class="page-header">
+  <h1><%=t '.title', :default => om.name %>  <small><%= om.definition %> [<i><%= Settings.species %></i>]</small></h1>
+</div>
+
+<div class="section">
+<h4 id="orf">ORF Prediction</h4>
+<%= render(:partial => "summary_orf_prediction", 
+           :locals => {:om => om}) %>
+<p><b>Sequence</b>: <%= link_to("CDS", :controller => "orf_models", :action => "fasta_cds") %> | <%= link_to("Protein", :controller => "orf_models", :action => "fasta_pep") %> (FASTA format)</p>
+</div>
+
+
+
+<div class="section">
+<h4 id="blast_nr">BLAST NR</h4>
+<% br = om.blast_nr_results %>
+<%= render(:partial => "table_blast_result",
+           :locals => {:ntop => 3, :blast_lines => br}) %>
+<p>
+<%= link_to("View BLASTP reults more ...", :controller => "orf_models", :action => "blast_nr") %>
+</p>
+</div>
+
+<div class="section">
+<h4 id="pfam">Pfam Motifs</h4>
+<%= render(:partial => "pfam_report_table",
+           :locals => {:om => om}) %>
+</div>
+
+
+<div class="section">
+<h4>Ortholog group (OrthoDB)</h4>
+<%= render(:partial => "table_orthodb7_hit",
+           :locals => {:om => om}) %>
+</div>
+
+<div class="section">
+<h4>BLAST2GO Annotation</h4>
+<p><%= om.b2g_goterms.map{|g| g.goterm}.join(", ") %></p>
+<p>annotation: <b><%= om.b2g_annotation ? om.b2g_annotation.annotation : "none" %></b></p>
+
+</div>
+
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              orf_models_path, :class => 'btn'  %>
+</div>
+
