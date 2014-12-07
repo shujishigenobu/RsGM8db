@@ -1,0 +1,54 @@
+<table class='table table-condensed'>
+<tr>
+  <th>cluster ID</th>
+  <th>species</th>
+  <th>gene</th>
+  <th>is_seed_ortholog</th>
+  <th>score</th>
+  <th>species_in_cluster</th>
+  <th>tree_conflict</th>
+</tr>
+
+<tr>
+  <td><%= c.cluster %></td>
+  <td><%= c.species %></td>
+  <td><%= c.gene %></td>
+  <td><%= c.is_seed_ortholog %></td>
+  <td><%= c.score %></td>
+  <td><%= c.species_in_cluster %></td>
+  <td><%= c.tree_conflict %></td>
+</tr>
+
+</table>
+
+<% members_by_sp = {} %>
+<% sp_order.each do |sp| %>
+<%   members_by_sp[sp] = members.select{|m| m.species == sp} %>
+<% end %>
+
+<table class='table table-condensed'>
+<tr>
+<%= raw sp_order.map{|sp| "<th>#{sp}</th>"}.join %>
+</tr>
+<tr>
+<%= raw sp_order.map{|sp| "<td>#{members_by_sp[sp].size}</td>"}.join %>
+</tr>
+<%= raw sp_order.map{|sp| "<td>#{members_by_sp[sp].map{|m| m.gene}.join(", ")}</td>"}.join %>
+</table>
+
+<!-- 
+<p> members</p>
+<table class='table table-condensed'>
+<% members.each do |m| %>
+<tr>
+  <td><%= m.cluster %></td>
+  <td><%= m.species %></td>
+  <td><%= m.gene %></td>
+  <td><%= m.is_seed_ortholog %></td>
+  <td><%= m.score %></td>
+  <td><%= m.species_in_cluster %></td>
+  <td><%= m.tree_conflict %></td>
+</tr>
+<% end %>
+</table>
+-->

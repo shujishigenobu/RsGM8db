@@ -58,6 +58,30 @@
 
 </div>
 
+<div class="section">
+<h4>Ortholog group (MultiParanoid by TermiteG)</h4>
+<h5>Set1: Cpun-Dmel-Hsjo-Mnat-Pame-Rspe-Tcas-Znev (Termites + Dmel,Tcas)</h5>
+
+<% clusters = om.mpara_set1_entries %>
+<% clusters.each do |cl| %>
+<% members = MparaSet1Entry.where("cluster = '#{cl.cluster}'") %>
+<%= render(:partial => "multiparanoid_report",
+           :locals => {:c => cl, :members => members,
+                       :sp_order => ["Pame", "Cpun", "Hsjo", "Znev", "Rspe", "Mnat", "Tcas", "Dmel"] }) %>
+<% end %>
+
+
+<h5>Set2: Cpun-Hsjo-Mnat-Pame-Rspe-Znev (Termites only) </h5>
+<% clusters = om.mpara_set2_entries %>
+<% clusters.each do |cl| %>
+<% members = MparaSet2Entry.where("cluster = '#{cl.cluster}'") %>
+
+<%= render(:partial => "multiparanoid_report",
+           :locals => {:c => cl, :members => members,
+                       :sp_order => ["Pame", "Cpun", "Hsjo", "Znev", "Rspe", "Mnat"] }) %>
+<% end %>
+
+</div>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
