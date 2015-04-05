@@ -33,7 +33,16 @@
 <tr>
 <%= raw sp_order.map{|sp| "<td>#{members_by_sp[sp].size}</td>"}.join %>
 </tr>
-<%= raw sp_order.map{|sp| "<td>#{members_by_sp[sp].map{|m| m.gene}.join(", ")}</td>"}.join %>
+<% html = raw sp_order.map{|sp| "<td>#{members_by_sp[sp].map{|m| m.gene}.join(', ')}</td>"}.join %>
+
+<% html =  html.gsub(/(Znev_\d+)/){|s| link_to(s, url_termiteblast_znev(s)) } %>
+<% html =  html.gsub(/(Mnat_\d+)/){|s| link_to(s, url_termiteblast_mnat(s)) } %>
+<% html =  html.gsub(/(Pame_m\.\d+)/){|s| link_to(s, url_termiteblast_pame(s)) } %>
+<% html =  html.gsub(/(Cpun_m\.\d+)/){|s| link_to(s, url_termiteblast_cpun(s)) } %>
+<% html =  html.gsub(/(Hsjo_m\.\d+)/){|s| link_to(s, url_termiteblast_hsjo(s)) } %>
+
+<%= raw html %>
+
 </table>
 
 <!-- 

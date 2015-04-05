@@ -83,8 +83,42 @@
 
 </div>
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              orf_models_path, :class => 'btn'  %>
+<div class="section">
+<h4>RNA-seq Expression Data</h4>
+<% exp_title = "Hojo 2014Feb" %>
+<h5><%= exp_title %></h5>
+<%= render(:partial => "chart_expression_level",
+           :locals => {:experiment => "rnaseq_set1_exp_level", :title => exp_title,
+                       :samples => ["idx11R1", "idx20R1"],
+                       :sample_label => {"idx11R1" => "Soldier", "idx20R1" => "Worker"}
+                      })
+ %>
+<%= render(:partial => "table_expression_level",
+           :locals => {:experiment => "rnaseq_set1_exp_level", :title => "Hojo",
+                       :samples => ["idx11R1", "idx20R1"],
+      	      	       :sample_label =>	{"idx11R1" => "Soldier", "idx20R1" => "Worker"}
+       	       	      })
+ %>
 </div>
 
+<div class="section">
+<h4>RNA-seq Expression Data</h4>
+<% exp_title = "Toyama 2015Feb" %>
+<h5><%= exp_title %></h5>
+<%= link_to(image_tag(url_rnaseq_chart(om), :size => "320x320"), url_rnaseq_chart(om))  =%>
+<%= link_to(image_tag(url_rnaseq_chart_body(om), :size => "320x320"), url_rnaseq_chart_body(om))  =%>
+<%= link_to(image_tag(url_rnaseq_chart_head(om), :size => "320x320"), url_rnaseq_chart_head(om))  =%>
+<%= link_to(image_tag(url_rnaseq_rpkm_chart(om), :size => "320x320"), url_rnaseq_rpkm_chart(om))  =%>
+<%= link_to(image_tag(url_rnaseq_rpkm_chart_body(om), :size => "320x320"), url_rnaseq_rpkm_chart(om))  =%>
+<%= link_to(image_tag(url_rnaseq_rpkm_chart_head(om), :size => "320x320"), url_rnaseq_rpkm_chart(om))  =%>
+
+<br />
+WMH: worker; male; head<br />
+WMB: worker; male; body<br /> 
+WFH: worker; female; head<br />
+WFB: worker; female; body<br />
+SMH: soldier; male; head<br />
+SMB: soldier; male; body<br />
+SFH: soldier; female; head<br />
+SFB: soldier; female; body<br />
+AMH: alate;

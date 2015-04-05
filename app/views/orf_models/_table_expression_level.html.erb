@@ -1,24 +1,18 @@
-<% gname  = @orf_model.transcript_model.name.sub(/_seq\d+/, "") %>
+<% data = @orf_model.send(experiment) %>
 
-<% res = ExpressionLevel.where(:gene => gname)[0] %>
-<% libs = %w{
-  f1hh f2hh f3hh
-  m1hh m2hh m3hh
-  f1th f2th f3th
-  m1th m2th m3th }
-%>
+<% exdata = samples.map{|s| data.send(s)} %>
 
 <table class='table table-bordered table-condensed'>
 
 <tr>
-<% libs.each_with_index do |lib, i| %>
-  <th><%= lib %></th>
+<% samples.each_with_index do |s, i| %>
+  <th><%= "#{sample_label[s]} (#{s})" %></th>
 <% end %>
 </tr>
 
 <tr>
-<% libs.each_with_index do |lib, i| %>
-  <td><%= sprintf("%.2f", res.send(lib)) %></td>
+<% exdata.each_with_index do |x, i| %>
+  <td><%= sprintf("%.2f", x) %></td>
 <% end %>
 </tr>
 

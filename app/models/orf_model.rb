@@ -7,6 +7,7 @@ class OrfModel < ActiveRecord::Base
   has_one :orthodb7_hit
 #  has_one :inparanoid_hf_hc_group
   has_one :b2g_annotation
+  has_one :rnaseq_set1_exp_level
 
   has_many :blast_nr_results
   has_many :interpro_motifs
