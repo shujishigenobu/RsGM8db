@@ -15,6 +15,9 @@ class OrfModel < ActiveRecord::Base
   has_many :b2g_goterms
   has_many :mpara_set1_entries
   has_many :mpara_set2_entries
+  has_many :mpara_set3_entries
+  has_many :mpara_set4_entries
+  has_many :mpara_set5_entries
 
   def location
     /scaffold_\d+:\d+\-\d+\([\+\-]\)/.match(description)[0]

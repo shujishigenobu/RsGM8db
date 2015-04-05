@@ -71,6 +71,7 @@
 <% end %>
 
 
+
 <h5>Set2: Cpun-Hsjo-Mnat-Pame-Rspe-Znev (Termites only) </h5>
 <% clusters = om.mpara_set2_entries %>
 <% clusters.each do |cl| %>
@@ -79,6 +80,39 @@
 <%= render(:partial => "multiparanoid_report",
            :locals => {:c => cl, :members => members,
                        :sp_order => ["Pame", "Cpun", "Hsjo", "Znev", "Rspe", "Mnat"] }) %>
+<% end %>
+
+<h5>Set3: Cpun-Dmel-Dpul-Hsjo-Mnat-Pame-Rspe-Tcas-Znev (2015-4-5) </h5>
+<% clusters = om.mpara_set3_entries %>
+<% clusters.each do |cl| %>
+<% members = MparaSet3Entry.where("cluster = '#{cl.cluster}'") %>
+
+<%= render(:partial => "multiparanoid_report",
+           :locals => {:c => cl, :members => members,
+                       :sp_order => ["Pame", "Cpun", "Hsjo", "Znev", "Rspe", "Mnat", "Dpul", "Tcas", "Dmel"] })
+ %>
+<% end %>
+
+<h5>Set4: Cpun-Dmel-Hsjo-Mnat-Pame-Rspe-Tcas-Znev (2015-4-5) </h5>
+<% clusters = om.mpara_set4_entries %>
+<% clusters.each do |cl| %>
+<% members = MparaSet4Entry.where("cluster = '#{cl.cluster}'") %>
+
+<%= render(:partial => "multiparanoid_report",
+           :locals => {:c => cl, :members => members,
+                       :sp_order => ["Pame", "Cpun", "Hsjo", "Znev", "Rspe", "Mnat", "Tcas", "Dmel"] }\
+) %>
+<% end %>
+
+<h5>Set5: Cpun-Hsjo-Mnat-Pame-Rspe-Znev (2015-4-5) </h5>
+<% clusters = om.mpara_set5_entries %>
+<% clusters.each do |cl| %>
+<% members = MparaSet5Entry.where("cluster = '#{cl.cluster}'") %>
+
+<%= render(:partial => "multiparanoid_report",
+           :locals => {:c => cl, :members => members,
+                       :sp_order => ["Pame", "Cpun", "Hsjo", "Znev", "Rspe", "Mnat"] }\
+) %>
 <% end %>
 
 </div>
@@ -105,9 +139,10 @@
 <h4>RNA-seq Expression Data</h4>
 <% exp_title = "Toyama 2015Feb" %>
 <h5><%= exp_title %></h5>
-<%= link_to(image_tag(url_rnaseq_chart(om), :size => "320x320"), url_rnaseq_chart(om))  =%>
+<!-- <%= link_to(image_tag(url_rnaseq_chart(om), :size => "320x320"), url_rnaseq_chart(om))  =%>
 <%= link_to(image_tag(url_rnaseq_chart_body(om), :size => "320x320"), url_rnaseq_chart_body(om))  =%>
 <%= link_to(image_tag(url_rnaseq_chart_head(om), :size => "320x320"), url_rnaseq_chart_head(om))  =%>
+-->
 <%= link_to(image_tag(url_rnaseq_rpkm_chart(om), :size => "320x320"), url_rnaseq_rpkm_chart(om))  =%>
 <%= link_to(image_tag(url_rnaseq_rpkm_chart_body(om), :size => "320x320"), url_rnaseq_rpkm_chart(om))  =%>
 <%= link_to(image_tag(url_rnaseq_rpkm_chart_head(om), :size => "320x320"), url_rnaseq_rpkm_chart(om))  =%>
