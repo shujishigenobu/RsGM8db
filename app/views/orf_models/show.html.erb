@@ -60,6 +60,7 @@
 
 <div class="section">
 <h4>Ortholog group (MultiParanoid by TermiteG)</h4>
+<!---
 <h5>Set1: Cpun-Dmel-Hsjo-Mnat-Pame-Rspe-Tcas-Znev (Termites + Dmel,Tcas)</h5>
 
 <% clusters = om.mpara_set1_entries %>
@@ -81,8 +82,9 @@
            :locals => {:c => cl, :members => members,
                        :sp_order => ["Pame", "Cpun", "Hsjo", "Znev", "Rspe", "Mnat"] }) %>
 <% end %>
+-->
 
-<h5>Set3: Cpun-Dmel-Dpul-Hsjo-Mnat-Pame-Rspe-Tcas-Znev (2015-4-5) </h5>
+<h5>Set3: Cpun-Dmel-Dpul-Hsjo-Mnat-Pame-Rspe-Tcas-Znev (2015-4-5) termites + 2 other insects and 1 Crustacea</h5>
 <% clusters = om.mpara_set3_entries %>
 <% clusters.each do |cl| %>
 <% members = MparaSet3Entry.where("cluster = '#{cl.cluster}'") %>
@@ -93,7 +95,7 @@
  %>
 <% end %>
 
-<h5>Set4: Cpun-Dmel-Hsjo-Mnat-Pame-Rspe-Tcas-Znev (2015-4-5) </h5>
+<h5>Set4: Cpun-Dmel-Hsjo-Mnat-Pame-Rspe-Tcas-Znev (2015-4-5) termites + 2 holometabolas</h5>
 <% clusters = om.mpara_set4_entries %>
 <% clusters.each do |cl| %>
 <% members = MparaSet4Entry.where("cluster = '#{cl.cluster}'") %>
@@ -104,7 +106,7 @@
 ) %>
 <% end %>
 
-<h5>Set5: Cpun-Hsjo-Mnat-Pame-Rspe-Znev (2015-4-5) </h5>
+<h5>Set5: Cpun-Hsjo-Mnat-Pame-Rspe-Znev (2015-4-5) termites only </h5>
 <% clusters = om.mpara_set5_entries %>
 <% clusters.each do |cl| %>
 <% members = MparaSet5Entry.where("cluster = '#{cl.cluster}'") %>
